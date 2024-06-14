@@ -10,7 +10,7 @@ BaselineOfStonePaperScissors >> baseline: spec [
 	<baseline>
 	
 	spec for: #common do: [ 
-		spec postLoadDoIt: #postLoad:package:.
+		spec postLoadDoIt: #postload:package:.
 		
 		spec package: 'StonePaperScissors'
 	].
