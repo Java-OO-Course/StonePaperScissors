@@ -23,7 +23,7 @@ GameElement >> play: aGameElement [
 	self subclassResponsibility
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'gameplay' }
 GameElement >> play: aGameElement result: aResultHandler [
 
 	self subclassResponsibility
@@ -41,7 +41,7 @@ GameElement >> playAgainstPaper: aPaper onDraw: aDrawBlock onReceiverWin: aWinBl
 	self subclassResponsibility
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'gameplay' }
 GameElement >> playAgainstPaper: aPaper result: aResultHandler [
 
 	self subclassResponsibility
@@ -59,7 +59,7 @@ GameElement >> playAgainstScissors: aScissors onDraw: aDrawBlock onReceiverWin: 
 	self subclassResponsibility
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'gameplay' }
 GameElement >> playAgainstScissors: aScissors result: aResultHandler [
 
 	self subclassResponsibility
@@ -77,7 +77,7 @@ GameElement >> playAgainstStone: aStone onDraw: aDrawBlock onReceiverWin: aWinBl
 	self subclassResponsibility
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'gameplay' }
 GameElement >> playAgainstStone: aStone result: aResultHandler [
 
 	self subclassResponsibility

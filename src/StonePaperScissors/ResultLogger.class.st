@@ -8,11 +8,15 @@ Class {
 { #category : 'gameplay' }
 ResultLogger >> drawBetween: aLeftElement and: aRightElement [
 
+	super winner: aLeftElement against: aRightElement.
+
 	('Draw between ', aLeftElement asString, ' and ', aRightElement asString) crTrace
 ]
 
 { #category : 'gameplay' }
-ResultLogger >> winner: aWinnerElement against: aLooserElement [
+ResultLogger >> winner: aWinnerElement against: aLoserElement [
 
-	(aWinnerElement asString , ' win against ' , aLooserElement asString) crTrace
+	super winner: aWinnerElement against: aLoserElement.
+	 
+	(aWinnerElement asString , ' win against ' , aLoserElement asString) crTrace
 ]

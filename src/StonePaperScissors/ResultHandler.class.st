@@ -3,44 +3,49 @@ Class {
 	#superclass : 'Object',
 	#instVars : [
 		'winner',
-		'looser',
-		'draw'
+		'draw',
+		'loser'
 	],
 	#category : 'StonePaperScissors',
 	#package : 'StonePaperScissors'
 }
 
 { #category : 'gameplay' }
-ResultHandler >> draw: aGameElement [
+ResultHandler >> drawBetween: aLeftElement and: aRightElement [
 
-	draw := aGameElement
+	draw := true
 ]
 
 { #category : 'testing' }
 ResultHandler >> isDraw [
 
-	^ draw isNotNil
+	draw ifNil: [ self error: 'Result not defined' ].
+
+	^ draw
 ]
 
 { #category : 'results' }
-ResultHandler >> looser [
+ResultHandler >> loser [
 	
-	self isDraw ifTrue: [ self error: 'The game is draw, there is no looser' ].
+	self isDraw ifTrue: [ self error: 'The game is draw, there is no loser' ].
+	loser ifNil: [ self error: 'Result not defined' ].
 
-	^ looser
+	^ loser
 ]
 
 { #category : 'results' }
 ResultHandler >> winner [
 
 	self isDraw ifTrue: [ self error: 'The game is draw, there is no winner' ].
+	winner ifNil: [ self error: 'Result not defined' ].
 
 	^ winner
 ]
 
 { #category : 'gameplay' }
-ResultHandler >> winner: aWinnerElement against: aLooserElement [
+ResultHandler >> winner: aWinnerElement against: aLoserElement [
 
 	winner := aWinnerElement.
-	looser := aLooserElement
+	loser := aLoserElement.
+	draw := false.
 ]
