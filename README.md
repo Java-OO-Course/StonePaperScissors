@@ -24,21 +24,26 @@ On va utiliser le dispatch pour **éviter** d'écrire le type d'algorithme suiva
 
 Game >> #play: aLeftElement right: aRightElement
 
-  ((aLeftElement isKindOf: Paper) and: [aRightElement isKindOf: Paper])
-    ifTrue: [ ^ #draw ].
   ((aLeftElement isKindOf: Paper) and: [aRightElement isKindOf: Stone])
     ifTrue: [ ^ #paper ].
+  ((aLeftElement isKindOf: Paper) and: [aRightElement isKindOf: Paper])
+    ifTrue: [ ^ #draw ].
   ((aLeftElement isKindOf: Paper) and: [aRightElement isKindOf: Scissors])
     ifTrue: [ ^ #scissors ].
 
-  ((aLeftElement isKindOf: Scissors) and: [aRightElement isKindOf: Scissors])
-    ifTrue: [ ^ #draw ].
-  ((aLeftElement isKindOf: Scissors) and: [aRightElement isKindOf: Paper])
-    ifTrue: [ ^ #scissors ].
   ((aLeftElement isKindOf: Scissors) and: [aRightElement isKindOf: Stone])
     ifTrue: [ ^ #stone ].
+  ((aLeftElement isKindOf: Scissors) and: [aRightElement isKindOf: Paper])
+    ifTrue: [ ^ #scissors ].
+  ((aLeftElement isKindOf: Scissors) and: [aRightElement isKindOf: Scissors])
+    ifTrue: [ ^ #draw ].
 
-  "etc..."
+   ((aLeftElement isKindOf: Stone) and: [aRightElement isKindOf: Stone])
+    ifTrue: [ ^ #draw ].
+  ((aLeftElement isKindOf: Stone) and: [aRightElement isKindOf: Paper])
+    ifTrue: [ ^ #paper ].
+  ((aLeftElement isKindOf: Stone) and: [aRightElement isKindOf: Scissors])
+    ifTrue: [ ^ #stone ].
 ```
 
 Pour ça, on définit une hiérarchie de classes qui va définir nos éléments de jeux:  
@@ -289,8 +294,8 @@ Comment réutiliser les blocks pour éviter la répétition de code ?
 On va résoudre ce problème en créant des objets qui seront chargés de récupérer le résultat du jeu et d'exécuter des comportements en fonction.  
 On créé une classe `ResultHandler` dans laquelle on va implémenter les méthodes suivantes:  
 - `drawBetween: aLeftElement and: aRightElement`: à appeller si le résultat est une égalité.
-- `winner: aWinner loser: aLoser : à appeller si le résultat est différent d'une égalité.
-- `isDraw`: renvoit true si il y a égalité, false sinon.
+- `winner: aWinner loser: aLoser`: à appeller si le résultat est différent d'une égalité.
+- `isDraw`: renvoit true s'il y a égalité, false sinon.
 - `winner`: accesseur qui renvoit le gagnant ou déclenche une erreur si on tente de récupérer le gagnant mais qu'il y a égalité.
 - `loser`: accesseur qui renvoit le perdant ou déclenche une erreur si on tente de récupérer le gagnant mais qu'il y a égalité.
 
@@ -341,7 +346,7 @@ result loser.
 
 Pour ajouter du comportement on sous-classe `ResultHandler` et on surcharge (redéfinit) les méthodes suivante:
 - `drawBetween: aLeftElement and: aRightElement`: à appeller si le résultat est une égalité.
-- `winner: aWinner loser: aLoser : à appeller si le résultat est différent d'une égalité.
+- `winner: aWinner loser: aLoser`: à appeller si le résultat est différent d'une égalité.
 
 Exemple, je veux créer un handler qui log dans la console les différentes parties.   
 Pour ça je créé une classe `ResultLogger` avec les méthodes:  
@@ -349,7 +354,7 @@ Pour ça je créé une classe `ResultLogger` avec les méthodes:
 ```st
 ResultLogger >> #drawBetween: aLeftElement and: aRightElement
 
-	super winner: aLeftElement against: aRightElement. "On appelle le comportement par défaut de la superclasse"
+	super drawBetween: aLeftElement and: aRightElement. "On appelle le comportement par défaut de la superclasse"
 
 	('Draw between ', aLeftElement asString, ' and ', aRightElement asString) crTrace
 
