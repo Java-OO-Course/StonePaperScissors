@@ -17,6 +17,12 @@ Stone >> play: anObject [
 	^ anObject playAgainstStone: self
 ]
 
+{ #category : 'as yet unclassified' }
+Stone >> play: aGameElement result: aResultHandler [ 
+
+	^ aGameElement playAgainstStone: self result: aResultHandler 
+]
+
 { #category : 'gameplay' }
 Stone >> playAgainstPaper: aPaper [
 
@@ -27,6 +33,12 @@ Stone >> playAgainstPaper: aPaper [
 Stone >> playAgainstPaper: aPaper onDraw: aDrawBlock onReceiverWin: aWinBlock onReceiverLose: aLoseBlock [
 
 	^ aWinBlock value: aPaper value: self
+]
+
+{ #category : 'as yet unclassified' }
+Stone >> playAgainstPaper: aPaper result: aResultHandler [ 
+
+	^ aResultHandler winner: aPaper against: self 
 ]
 
 { #category : 'gameplay' }
@@ -41,6 +53,12 @@ Stone >> playAgainstScissors: aScissors onDraw: aDrawBlock onReceiverWin: aWinBl
 	^ aLoseBlock value: aScissors value: self
 ]
 
+{ #category : 'as yet unclassified' }
+Stone >> playAgainstScissors: aScissors result: aResultHandler [
+
+	^ aResultHandler winner: self against: aScissors 
+]
+
 { #category : 'gameplay' }
 Stone >> playAgainstStone: aPaper [
 
@@ -51,4 +69,10 @@ Stone >> playAgainstStone: aPaper [
 Stone >> playAgainstStone: aStone onDraw: aDrawBlock onReceiverWin: aWinBlock onReceiverLose: aLoseBlock [
 
 	^ aDrawBlock value: aStone value: self
+]
+
+{ #category : 'as yet unclassified' }
+Stone >> playAgainstStone: aStone result: aResultHandler [ 
+	
+	^ aResultHandler draw: aStone 
 ]
