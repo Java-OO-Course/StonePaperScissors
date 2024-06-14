@@ -11,5 +11,7 @@ BaselineOfStonePaperScissors >> baseline: spec [
 	
 	spec for: #common do: [ 
 		spec package: 'StonePaperScissors'
-	]
+	].
+	'StonePaperScissors' asPackage browse
+
 ]
