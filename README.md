@@ -8,7 +8,7 @@ Le dispatch est un concept orienté objet qui consiste à **choisir** les compor
 
 ## Installer le projet
 
-Pour installer le projet dans une image Pharo, copiez et coller le code suivant:  
+Pour installer le projet dans une image Pharo, copiez et coller le code suivant dans le playground (Meta + Shift + OW) d'**UNE IMAGE PHARO 12**:  
 
 ```st
 Metacello new
