@@ -10,8 +10,15 @@ BaselineOfStonePaperScissors >> baseline: spec [
 	<baseline>
 	
 	spec for: #common do: [ 
+		spec postLoadDoIt: #postLoad:package:.
+		
 		spec package: 'StonePaperScissors'
 	].
-	'StonePaperScissors' asPackage browse
 
+]
+
+{ #category : 'actions' }
+BaselineOfStonePaperScissors >> postload: aLoader package: aSpecPackage [
+
+	'StonePaperScissors' asPackage browse
 ]
