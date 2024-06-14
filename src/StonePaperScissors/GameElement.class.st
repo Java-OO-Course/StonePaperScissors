@@ -12,6 +12,12 @@ GameElement class >> isAbstract [
 ]
 
 { #category : 'gameplay' }
+GameElement >> competeWith: aGameElement onDraw: aDrawBlock onReceiverWin: aWinBlock onReceiverLose: aLoseBlock [
+
+	self subclassResponsibility
+]
+
+{ #category : 'gameplay' }
 GameElement >> play: aGameElement [
 
 	self subclassResponsibility
@@ -24,13 +30,31 @@ GameElement >> playAgainstPaper: aPaper [
 ]
 
 { #category : 'gameplay' }
+GameElement >> playAgainstPaper: aPaper onDraw: aDrawBlock onReceiverWin: aWinBlock onReceiverLose: aLoseBlock [
+
+	self subclassResponsibility
+]
+
+{ #category : 'gameplay' }
 GameElement >> playAgainstScissors: aScissors [
 
 	self subclassResponsibility
 ]
 
 { #category : 'gameplay' }
+GameElement >> playAgainstScissors: aScissors onDraw: aDrawBlock onReceiverWin: aWinBlock onReceiverLose: aLoseBlock [
+
+	self subclassResponsibility
+]
+
+{ #category : 'gameplay' }
 GameElement >> playAgainstStone: aPaper [
+
+	self subclassResponsibility
+]
+
+{ #category : 'gameplay' }
+GameElement >> playAgainstStone: aStone onDraw: aDrawBlock onReceiverWin: aWinBlock onReceiverLose: aLoseBlock [
 
 	self subclassResponsibility
 ]
